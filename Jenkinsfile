@@ -9,8 +9,8 @@ pipeline {
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
-          bat "docker login -u ${env.dockerUser} -p ${env.dockerPassword}"
-          bat 'docker push dleono21/jenkins-web:latest'
+          sh "docker login -u ${env.dockerUser} -p ${env.dockerPassword}"
+          sh 'docker push dleono21/jenkins-web:latest'
         }
       }
     }
